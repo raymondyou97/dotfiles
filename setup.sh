@@ -1,11 +1,14 @@
 #!/bin/bash
 
+baseDirectory=$HOME/dotfiles
+
 help="Installs my personal configs on a new work station
 Usage: $0
     -h : Help
     -a : Installs all librarys/dependencies
     -v : Configures vim
     -z : Configures zsh
+    -t : Configures tmux
 "
 
 if [[ "$#" -lt 1 ]]; then
@@ -52,7 +55,7 @@ install() {
     # install rg
     curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
     sudo dpkg -i ripgrep_11.0.2_amd64.deb
-    rm ~/dotfiles/ripgrep*
+    rm $baseDirectory/ripgrep*
 
     # install bat
     wget https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb
@@ -62,7 +65,7 @@ install() {
 
 setup_vim() {
     # symlink
-    ln -fs ~/dotfiles/vimrc ~/.vimrc
+    ln -fs $baseDirectory/vimrc ~/.vimrc
 
     # vim color scheme
     mkdir -p ~/.vim/colors/
@@ -78,11 +81,14 @@ setup_vim() {
 }
 
 setup_zshrc() {
-    # symlink
-    ln -fs ~/dotfiles/zshrc ~/.zshrc
+    ln -fs $baseDirectory/zshrc ~/.zshrc
 }
 
-while getopts ":havz" opt; do
+setup_tmux() {
+    ln -fs $baseDirectory/tmux.conf ~/.tmux
+}
+
+while getopts ":havzt" opt; do
     case ${opt} in
         h ) 
             echo "$help"
@@ -95,6 +101,9 @@ while getopts ":havz" opt; do
             ;;
         z )
             setup_zshrc
+            ;;
+        t )
+            setup_tmux
             ;;
         \? ) 
             echo "ERROR: Option not supported. -h for options"
