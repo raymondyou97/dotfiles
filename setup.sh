@@ -7,8 +7,7 @@ Usage: $0
     -h : Help
     -a : Installs all librarys/dependencies
     -v : Configures vim
-    -z : Configures zsh
-    -t : Configures tmux
+    -r : Configures rest (zsh, tmux, ssh, etc)
 "
 
 if [[ "$#" -lt 1 ]]; then
@@ -17,6 +16,7 @@ if [[ "$#" -lt 1 ]]; then
 fi
 
 install() {
+    echo "INSTALLING LIBS"
     # install zsh
     sudo apt install zsh
 
@@ -61,9 +61,11 @@ install() {
     wget https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb
     sudo dpkg -i bat*
     rm -f bat*
+    echo "DONE WITH INSTALLING LIBS"
 }
 
 setup_vim() {
+    echo "CONFIGURING VIM"
     # symlink
     ln -fs $baseDirectory/vimrc ~/.vimrc
 
@@ -78,17 +80,18 @@ setup_vim() {
     # setup YCM
     cd ~/.vim/bundle/YouCompleteMe
     python3 install.py --all
+    echo "DONE WITH CONFIGURING VIM"
 }
 
-setup_zshrc() {
+setup_rest() {
+    echo "CONFIGURING REST"
     ln -fs $baseDirectory/zshrc ~/.zshrc
-}
-
-setup_tmux() {
     ln -fs $baseDirectory/tmux.conf ~/.tmux
+    ln -fs $baseDirectory/ssh_config ~/.ssh/config
+    echo "DONE WITH CONFIGURING REST"
 }
 
-while getopts ":havzt" opt; do
+while getopts ":havr" opt; do
     case ${opt} in
         h ) 
             echo "$help"
@@ -99,11 +102,8 @@ while getopts ":havzt" opt; do
         v )
             setup_vim
             ;;
-        z )
-            setup_zshrc
-            ;;
-        t )
-            setup_tmux
+        r )
+            setup_rest
             ;;
         \? ) 
             echo "ERROR: Option not supported. -h for options"
