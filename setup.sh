@@ -1,10 +1,11 @@
 #!/bin/bash
 
 help="Installs my personal configs on a new work station
-Usage: $0 [-h] [-a] [-v]
+Usage: $0
     -h : Help
     -a : Installs all librarys/dependencies
-    -v : Configures VIM
+    -v : Configures vim
+    -z : Configures zsh
 "
 
 if [[ "$#" -lt 1 ]]; then
@@ -76,7 +77,12 @@ setup_vim() {
     python3 install.py --all
 }
 
-while getopts ":hav" opt; do
+setup_zshrc() {
+    # symlink
+    ln -fs ~/dotfiles/zshrc ~/.zshrc
+}
+
+while getopts ":havz" opt; do
     case ${opt} in
         h ) 
             echo "$help"
@@ -86,6 +92,9 @@ while getopts ":hav" opt; do
             ;;
         v )
             setup_vim
+            ;;
+        z )
+            setup_zshrc
             ;;
         \? ) 
             echo "ERROR: Option not supported. -h for options"
