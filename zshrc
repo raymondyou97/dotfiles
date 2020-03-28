@@ -7,6 +7,9 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH Theme
 ZSH_THEME="agnoster"
 
+# DEFAULT Editor
+export EDITOR='vim'
+
 # Plugins
 plugins=(git)
 
