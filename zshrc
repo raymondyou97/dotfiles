@@ -64,5 +64,8 @@ alias sa="sudo apt"
 alias v="vim"
 alias t="tmux"
 
+# quick directory changes
+alias df="cd ~/dotfiles"
+
 # BE AT END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
