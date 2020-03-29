@@ -14,6 +14,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'morhetz/gruvbox'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -22,7 +23,8 @@ filetype plugin indent on    " required
 " Features
 "------------------------------------------------------------
 syntax on                   " enable syntax processing
-colorscheme badwolf         " awesome colorscheme
+colorscheme gruvbox         " best colorscheme ay
+set background=dark
 
 "------------------------------------------------------------
 " Indentation options
@@ -110,3 +112,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Search and highlighting fix with gruvbox dark
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?

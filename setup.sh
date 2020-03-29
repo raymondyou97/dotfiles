@@ -69,10 +69,6 @@ setup_vim() {
     # symlink
     ln -fs $baseDirectory/vimrc ~/.vimrc
 
-    # vim color scheme
-    mkdir -p ~/.vim/colors/
-    wget http://bitbucket.org/sjl/badwolf/raw/tip/colors/badwolf.vim -P ~/.vim/colors/
-
     # set up vundle and install plugins
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
