@@ -1,8 +1,8 @@
-Host root_rebirth
+Host ro
     User root
     HostName raymondyou.me
 
-Host ray_rebirth
+Host ra
     User raymond
     HostName raymondyou.me
 
