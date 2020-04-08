@@ -82,7 +82,7 @@ setup_vim() {
 setup_rest() {
     echo "CONFIGURING REST"
     ln -fs $baseDirectory/zshrc ~/.zshrc
-    ln -fs $baseDirectory/tmux.conf ~/.tmux
+    ln -fs $baseDirectory/tmux.conf ~/.tmux.conf
     ln -fs $baseDirectory/ssh_config ~/.ssh/config
     echo "DONE WITH CONFIGURING REST"
 }
