@@ -18,6 +18,10 @@ Currently only works on Ubuntu/Debian. Repo must also be in home directory.
 
 `./setup.sh -r`
 
+4. Set up my ubuntu libs
+
+`./setup.sh -u`
+
 ## TODO
 
 1. Clean up and refactor the trash script

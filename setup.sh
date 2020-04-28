@@ -8,6 +8,7 @@ Usage: $0
     -a : Installs all librarys/dependencies
     -v : Configures vim
     -r : Configures rest (zsh, tmux, ssh, etc)
+    -u : My Ubuntu libs
 "
 
 if [[ "$#" -lt 1 ]]; then
@@ -90,7 +91,19 @@ setup_rest() {
     echo "DONE WITH CONFIGURING REST"
 }
 
-while getopts ":havr" opt; do
+setup_ubuntu_libs() {
+    echo "CONFIGURING UBUNTU LIBS"
+    wget https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/amd64/albert_0.16.1_amd64.deb
+    sudo dpkg -i albert*
+    rm -f albert*
+    sudo apt install gnome-tweaks
+    sudo apt install code
+    sudo snap install vlc
+    sudo apt install gnome-shell-extension-dash-to-panel
+    echo "DONE WITH UBUNTU LIBS"
+}
+
+while getopts ":havru" opt; do
     case ${opt} in
         h ) 
             echo "$help"
@@ -104,7 +117,10 @@ while getopts ":havr" opt; do
         r )
             setup_rest
             ;;
-        \? ) 
+        u )
+            setup_ubuntu_libs
+            ;;
+        \? )
             echo "ERROR: Option not supported. -h for options"
             ;;
     esac
