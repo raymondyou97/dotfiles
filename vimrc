@@ -25,6 +25,7 @@ filetype plugin indent on    " required
 syntax on                   " enable syntax processing
 colorscheme gruvbox         " best colorscheme ay
 set background=dark
+set t_Co=256
 set termguicolors
 
 "------------------------------------------------------------

@@ -61,8 +61,7 @@ alias gcb="git checkout -b"
 # other aliases
 alias ls="ls -l --color=auto"
 alias sa="sudo apt"
-alias v="vim"
-alias t="tmux"
+alias tmux="tmux -2"
 
 # quick directory changes
 alias df="cd ~/dotfiles"
