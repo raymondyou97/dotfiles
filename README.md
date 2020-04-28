@@ -4,7 +4,7 @@ My Personal Dotfiles
 
 ## Installation
 
-Will only work on Ubuntu/Debian OS
+Currently only works on Ubuntu/Debian. Repo must also be in home directory.
 
 1. Install libs/dependencies
 

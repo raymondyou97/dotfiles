@@ -25,6 +25,9 @@ install() {
     sudo apt upgrade
     sudo apt install curl git tmux wget
 
+    # install fonts-powerline for zsh themes
+    sudo apt install fonts-powerline
+
     # install oh my zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
