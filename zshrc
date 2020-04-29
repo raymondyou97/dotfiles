@@ -30,6 +30,11 @@ function s() {
     ssh -t $1 "bash --rcfile /tmp/.bashrc_temp ; rm /tmp/.bashrc_temp"
 }
 
+# kill whatever is at this port
+function kill() {
+    sudo kill -9 `sudo lsof -t -i:$1`
+}
+
 # ls after every cd
 function chpwd() {
     ls -l --color=auto
