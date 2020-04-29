@@ -66,10 +66,14 @@ alias gcb="git checkout -b"
 # other aliases
 alias ls="ls -l --color=auto"
 alias sa="sudo apt"
-alias tmux="tmux -2"
+# Use 256 color for tmux.
+alias tmux="TERM=screen-256color-bce tmux"
+# Attempt to take over existing sessions before creating a new tmux session.
+alias t="tmux a -d 2> /dev/null || tmux"
 
 # quick directory changes
 alias df="cd ~/dotfiles"
+alias cs="cd ~/CS"
 
 # BE AT END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
