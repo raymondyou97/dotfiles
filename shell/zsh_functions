@@ -1,0 +1,71 @@
+# initialize base tmux layout
+function ray() {
+    tmux split-window -h -p 30
+    tmux select-pane -t0
+}
+
+function ray2() {
+    tmux split-window -v -p 30
+    tmux split-window -h -p 50
+}
+
+# helper that brings over aliases when ssh
+function s() {
+    scp ~/.bashrc $1:/tmp/.bashrc_temp
+    ssh -t $1 "bash --rcfile /tmp/.bashrc_temp ; rm /tmp/.bashrc_temp"
+}
+
+# kill whatever is at this port
+function killport() {
+    sudo kill -9 `sudo lsof -t -i:$1`
+}
+
+# ls after every cd
+function chpwd() {
+    ls -l -FHG --color=auto
+}
+
+function ggpull() {
+    git pull origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+function gall() {
+    git add .
+    git commit -m $1
+    git push origin HEAD
+    output=$(gh pr view | head -n 1 | cat)
+    if [[ output ]]; then
+        if grep -q 'title' <<< $output; then
+            echo "\nPR ALREADY OPEN"
+            return 0
+        else
+            echo "\nCREATING NEW PR"
+            gh pr create --web
+        fi
+    fi
+}
+
+function kgpla() {
+    k get po -l app="$1"
+}
+
+function kbashpod() {
+    kubectl exec -it "$1" -- /bin/bash
+}
+
+function kbp() {
+    pod=$(kubectl get pod | tail -n+2 | sed -n $1p | awk '{print $1}')
+    echo "kbashing into $pod"
+    kubectl exec -it $pod -- /bin/bash
+}
+
+function kbgp() {
+    kubens $1
+    kubectl get po
+}
+
+function masterall() {
+    cd ~/dd
+    for subdir in ./*/ ; do (cd "$subdir" && (gchp || gchm)); done
+    echo "DONE"
+}

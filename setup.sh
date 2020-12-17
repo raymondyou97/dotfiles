@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: FIX THIS
+
 baseDirectory=$HOME/dotfiles
 
 help="Installs my personal configs on a new work station
@@ -105,7 +107,7 @@ setup_ubuntu_libs() {
 
 while getopts ":havru" opt; do
     case ${opt} in
-        h ) 
+        h )
             echo "$help"
             ;;
         a )

@@ -1,0 +1,7 @@
+*.out
+*.json
+*.csv
+*.test
+*.min.js
+vendor/
+.git/

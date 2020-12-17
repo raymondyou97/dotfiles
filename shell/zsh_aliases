@@ -1,0 +1,58 @@
+# git aliases
+alias gs="git status"
+alias gch="git checkout"
+alias gchp="git checkout prod && git pull"
+alias gchm="git checkout master && git pull"
+alias gd="git diff"
+alias gm="git merge"
+alias gi="git init"
+alias gcl="git clone"
+alias gcfd="git clean -fd"
+alias ga="git add"
+alias gaa="git add ."
+alias gcmsg="git commit -m"
+alias gf="git fetch"
+alias gr="git reset"
+alias grh="git reset --hard"
+alias gl="git log"
+alias ggpush="git push origin HEAD"
+alias gpl="git pull"
+alias gcb="git checkout -b"
+alias grpo="git remote prune origin"
+
+# other aliases
+alias ls="ls -l -FHG --color=auto"
+alias sa="sudo apt"
+alias szh="source ~/.zshrc"
+alias v="vim"
+alias c="clear"
+alias cdd="cd .."
+alias cddd="cd ../.."
+alias cdddd="cd ../../.."
+alias grep="grep --color=auto"
+alias diff="colordiff"
+# Attempt to take over existing sessions before creating a new tmux session.
+alias t="TERM=screen-256color-bce tmux a -d 2> /dev/null || tmux"
+alias cat="bat"
+alias sed="gsed"
+alias e="exit"
+alias aliases="{ alias && echo '----------------------------------------' && grep -i 'function' ~/dotfiles/shell/zsh_functions | awk '{print \$2 }' } | bat"
+
+# quick directory changes
+alias df="cd ~/dotfiles"
+alias cs="cd ~/CS"
+
+# notes aliases
+alias notes="cd ~/notes"
+
+# k8s aliases
+alias k="kubectl"
+alias kx="kubectx"
+alias kb="kubens"
+alias kd="kubectl describe"
+alias kg="kubectl get"
+alias kgp="kubectl get po"
+alias kgpo="kubectl get po -owide"
+alias kga="kubectl get all"
+alias kl="kubectl logs"
+alias kv="kubectl vault"
