@@ -1,7 +1,9 @@
 # Work Dotfiles
 
 Terminal: Alacritty
+
 Zsh Theme: Powerlevel10k
+
 Vim Theme: Gruvbox Dark
 
 ## Setup
