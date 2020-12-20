@@ -24,8 +24,8 @@ export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
 # Load ruby shims
-eval "$(rbenv init -)"
-eval "$(nodenv init -)"
+#eval "$(rbenv init -)"
+#eval "$(nodenv init -)"
 
 # Prefer GNU binaries to Macintosh binaries.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
@@ -76,9 +76,8 @@ setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 
-. ~/dotfiles/shell/k8s_aliases.sh
-
 # get all functions
+. ~/dotfiles/shell/zsh_aliases
 . ~/dotfiles/shell/zsh_functions
 
 # BE AT END
@@ -86,3 +85,6 @@ setopt hist_ignore_space
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/dotfiles/shell/p10k.zsh
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh

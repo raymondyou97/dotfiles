@@ -33,10 +33,9 @@ alias grep="grep --color=auto"
 alias diff="colordiff"
 # Attempt to take over existing sessions before creating a new tmux session.
 alias t="TERM=screen-256color-bce tmux a -d 2> /dev/null || tmux"
-alias cat="bat"
 alias sed="gsed"
 alias e="exit"
-alias aliases="{ alias && echo '----------------------------------------' && grep -i 'function' ~/dotfiles/shell/zsh_functions | awk '{print \$2 }' } | bat"
+alias aliases="{ alias && echo '----------------------------------------' && grep -i 'function' ~/dotfiles/shell/zsh_functions | awk '{print \$2 }' } | cat"
 
 # quick directory changes
 alias df="cd ~/dotfiles"
