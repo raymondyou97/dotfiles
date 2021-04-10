@@ -46,7 +46,7 @@ function gall() {
 }
 
 function kgpla() {
-    k get po -l app="$1"
+    k get po -l app="$1" | nl -v0
 }
 
 function kbashpod() {
@@ -59,9 +59,26 @@ function kbp() {
     kubectl exec -it $pod -- /bin/bash
 }
 
+function klp() {
+    pod=$(kubectl get pod | tail -n+2 | sed -n $1p | awk '{print $1}')
+    if [ -z "$2" ]; then
+        echo "k logs $pod"
+        kubectl logs $pod
+    else
+        echo "k logs $pod -c $2"
+        kubectl logs $pod -c $2
+    fi
+}
+
+function kdp() {
+    pod=$(kubectl get pod | tail -n+2 | sed -n $1p | awk '{print $1}')
+    echo "k describe pod $pod"
+    kubectl describe pod $pod
+}
+
 function kbgp() {
     kubens $1
-    kubectl get po
+    kubectl get po | nl -v0
 }
 
 function masterall() {
